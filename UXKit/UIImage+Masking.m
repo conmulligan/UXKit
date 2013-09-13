@@ -1,0 +1,55 @@
+//
+//  UIImage+Masking.m
+//  UXKit
+//
+//  Copyright 2012 Conor Mulligan. All rights reserved.
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+
+#import "UIImage+Masking.h"
+
+@implementation UIImage (Masking)
+
+- (UIImage *)maskWithColor:(UIColor *)color {
+    CGImageRef imageRef = self.CGImage;
+    
+    CGRect imageRect = CGRectMake(0.f, 0.f, CGImageGetWidth(imageRef), CGImageGetHeight(imageRef));
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(NULL, imageRect.size.width, imageRect.size.height, 8, imageRect.size.width * 4,
+                                                 colorSpace, kCGBitmapByteOrderDefault);
+    
+    CGContextSaveGState(context);
+    CGContextClipToMask(context, imageRect, imageRef);
+    CGContextSetFillColorWithColor(context, color.CGColor);
+    CGContextFillRect(context, imageRect);
+    CGContextRestoreGState(context);
+    
+    CGImageRef newImageRef = CGBitmapContextCreateImage(context);
+    UIImage *result = [UIImage imageWithCGImage:newImageRef scale:self.scale orientation:self.imageOrientation];
+    
+    CGImageRelease(newImageRef);
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    
+    return result;
+}
+
+@end
