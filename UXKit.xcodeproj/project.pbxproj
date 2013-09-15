@@ -18,6 +18,7 @@
 		E19D09B817E2B411006F9FEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E19D09B617E2B411006F9FEA /* InfoPlist.strings */; };
 		E19D09BA17E2B411006F9FEA /* UXKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D09B917E2B411006F9FEA /* UXKitTests.m */; };
 		E19D09C517E2B5A3006F9FEA /* UIApplication+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D09C417E2B5A3006F9FEA /* UIApplication+Utilities.m */; };
+		E1C86A4D17E60D8300630E10 /* UXJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C86A4C17E60D8300630E10 /* UXJSONRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		E19D09B917E2B411006F9FEA /* UXKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UXKitTests.m; sourceTree = "<group>"; };
 		E19D09C317E2B5A3006F9FEA /* UIApplication+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+Utilities.h"; sourceTree = "<group>"; };
 		E19D09C417E2B5A3006F9FEA /* UIApplication+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+Utilities.m"; sourceTree = "<group>"; };
+		E1C86A4B17E60D8300630E10 /* UXJSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXJSONRequest.h; sourceTree = "<group>"; };
+		E1C86A4C17E60D8300630E10 /* UXJSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXJSONRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				E19D09C417E2B5A3006F9FEA /* UIApplication+Utilities.m */,
 				E175F33917E2BDD3006918FE /* UIImage+Masking.h */,
 				E175F33A17E2BDD3006918FE /* UIImage+Masking.m */,
+				E1C86A4B17E60D8300630E10 /* UXJSONRequest.h */,
+				E1C86A4C17E60D8300630E10 /* UXJSONRequest.m */,
 				E19D09A017E2B410006F9FEA /* Supporting Files */,
 			);
 			path = UXKit;
@@ -238,6 +243,7 @@
 			files = (
 				E181806717E2BB9800654F04 /* NSManagedObjectContext+Utilities.m in Sources */,
 				E19D09C517E2B5A3006F9FEA /* UIApplication+Utilities.m in Sources */,
+				E1C86A4D17E60D8300630E10 /* UXJSONRequest.m in Sources */,
 				E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
