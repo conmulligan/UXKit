@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E173234717EBEF7500AB60B1 /* UIDevice+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */; };
 		E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */ = {isa = PBXBuildFile; fileRef = E175F33A17E2BDD3006918FE /* UIImage+Masking.m */; };
 		E181806717E2BB9800654F04 /* NSManagedObjectContext+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */; };
 		E19D099E17E2B410006F9FEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19D099D17E2B410006F9FEA /* Foundation.framework */; };
@@ -45,6 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E173234517EBEF7500AB60B1 /* UIDevice+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Utilities.h"; sourceTree = "<group>"; };
+		E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Utilities.m"; sourceTree = "<group>"; };
 		E175F33917E2BDD3006918FE /* UIImage+Masking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Masking.h"; sourceTree = "<group>"; };
 		E175F33A17E2BDD3006918FE /* UIImage+Masking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Masking.m"; sourceTree = "<group>"; };
 		E181806517E2BB9800654F04 /* NSManagedObjectContext+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Utilities.h"; sourceTree = "<group>"; };
@@ -125,6 +128,8 @@
 				E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */,
 				E19D09C317E2B5A3006F9FEA /* UIApplication+Utilities.h */,
 				E19D09C417E2B5A3006F9FEA /* UIApplication+Utilities.m */,
+				E173234517EBEF7500AB60B1 /* UIDevice+Utilities.h */,
+				E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */,
 				E175F33917E2BDD3006918FE /* UIImage+Masking.h */,
 				E175F33A17E2BDD3006918FE /* UIImage+Masking.m */,
 				E1C86A4B17E60D8300630E10 /* UXJSONRequest.h */,
@@ -243,6 +248,7 @@
 			files = (
 				E181806717E2BB9800654F04 /* NSManagedObjectContext+Utilities.m in Sources */,
 				E19D09C517E2B5A3006F9FEA /* UIApplication+Utilities.m in Sources */,
+				E173234717EBEF7500AB60B1 /* UIDevice+Utilities.m in Sources */,
 				E1C86A4D17E60D8300630E10 /* UXJSONRequest.m in Sources */,
 				E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */,
 			);
