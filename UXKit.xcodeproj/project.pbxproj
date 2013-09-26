@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1206D9D17F4871E00F5BE40 /* UXValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1206D9C17F4871E00F5BE40 /* UXValueViewController.m */; };
 		E173234717EBEF7500AB60B1 /* UIDevice+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */; };
 		E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */ = {isa = PBXBuildFile; fileRef = E175F33A17E2BDD3006918FE /* UIImage+Masking.m */; };
 		E181806717E2BB9800654F04 /* NSManagedObjectContext+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */; };
@@ -46,6 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E1206D9B17F4871E00F5BE40 /* UXValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXValueViewController.h; sourceTree = "<group>"; };
+		E1206D9C17F4871E00F5BE40 /* UXValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXValueViewController.m; sourceTree = "<group>"; };
 		E173234517EBEF7500AB60B1 /* UIDevice+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Utilities.h"; sourceTree = "<group>"; };
 		E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Utilities.m"; sourceTree = "<group>"; };
 		E175F33917E2BDD3006918FE /* UIImage+Masking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Masking.h"; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				E175F33A17E2BDD3006918FE /* UIImage+Masking.m */,
 				E1C86A4B17E60D8300630E10 /* UXJSONRequest.h */,
 				E1C86A4C17E60D8300630E10 /* UXJSONRequest.m */,
+				E1206D9B17F4871E00F5BE40 /* UXValueViewController.h */,
+				E1206D9C17F4871E00F5BE40 /* UXValueViewController.m */,
 				E19D09A017E2B410006F9FEA /* Supporting Files */,
 			);
 			path = UXKit;
@@ -251,6 +256,7 @@
 				E173234717EBEF7500AB60B1 /* UIDevice+Utilities.m in Sources */,
 				E1C86A4D17E60D8300630E10 /* UXJSONRequest.m in Sources */,
 				E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */,
+				E1206D9D17F4871E00F5BE40 /* UXValueViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
