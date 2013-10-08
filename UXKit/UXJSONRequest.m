@@ -27,6 +27,8 @@
 
 @interface UXJSONRequest ()
 
+@property (strong, nonatomic) NSMutableData *data;
+
 - (NSString *)dictionaryAsParameterString:(NSDictionary *)dictionary;
 
 - (void)loadJSON;
@@ -40,7 +42,10 @@
 @synthesize connection = _connection;
 @synthesize baseURL = _baseURL;
 @synthesize resource = _resource;
+@synthesize method = _method;
 @synthesize parameters = _parameters;
+@synthesize encodeParametersAsJSON = _encodeParametersAsJSON;
+@synthesize headerFields = _headerFields;
 @synthesize useBasicAuth = _useBasicAuth;
 @synthesize username = _username;
 @synthesize password = _password;
@@ -58,6 +63,7 @@
     if (self = [super init]) {
         self.baseURL = baseURL;
         self.resource = @"";
+        self.method = @"GET";
         
         _loading = NO;
     }
@@ -100,19 +106,45 @@
 #pragma mark - Connection
 
 - (void)openConnection {
-    NSString *parameters = [self dictionaryAsParameterString:self.parameters];
-    NSString *url = nil;
-    if (parameters && ![parameters isEqualToString:@""]) {
-        url = [[NSArray arrayWithObjects:_baseURL, self.resource, parameters, nil] componentsJoinedByString:@"/"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    request.cachePolicy = NSURLRequestUseProtocolCachePolicy;
+    request.timeoutInterval = 60;
+    request.HTTPMethod = self.method;
+    
+    if (self.encodeParametersAsJSON) {
+        NSError *error = NULL;
+        NSData * data = [NSJSONSerialization dataWithJSONObject:self.parameters options:0 error:&error];
+        
+        if (!data) {
+            NSLog(@"Error encoding JSON: %@", error);
+            
+            if (self.delegate && [self.delegate respondsToSelector:@selector(request:didFailWithError:)]) {
+                [self.delegate request:self didFailWithError:error];
+            }
+        }
+        
+        [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)[data length]] forHTTPHeaderField:@"Content-Length"];
+        [request setHTTPBody:data];
+        
+        // Add custom header fields
+        
+        [self.headerFields enumerateKeysAndObjectsUsingBlock: ^(id key, id value, BOOL *stop) {
+            [request addValue:value forHTTPHeaderField:key];
+        }];
+        
+        request.URL = [NSURL URLWithString:[[NSArray arrayWithObjects:_baseURL, self.resource, nil] componentsJoinedByString:@"/"]];
     } else {
-        url = [[NSArray arrayWithObjects:_baseURL, self.resource, nil] componentsJoinedByString:@"/"];
+        NSString *parameters = [self dictionaryAsParameterString:self.parameters];
+        
+        if (parameters && ![parameters isEqualToString:@""]) {
+            request.URL = [NSURL URLWithString:[[NSArray arrayWithObjects:_baseURL, self.resource, parameters, nil] componentsJoinedByString:@"/"]];
+        } else {
+            request.URL = [NSURL URLWithString:[[NSArray arrayWithObjects:_baseURL, self.resource, nil] componentsJoinedByString:@"/"]];
+        }
     }
     
-    NSLog(@"UXRESTRequest will load %@", url);
+    NSLog(@"UXRESTRequest will load %@", request.URL);
     
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]
-                                                  cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                              timeoutInterval:60.0];
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     if (_connection) {

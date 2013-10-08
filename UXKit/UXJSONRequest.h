@@ -35,25 +35,35 @@
 
 @end
 
-@interface UXJSONRequest : NSObject {
-    NSMutableData *_data;
-}
+@interface UXJSONRequest : NSObject
+
+// Connection
 
 @property (strong, nonatomic, readonly) NSURLConnection *connection;
+@property (nonatomic, readonly, getter = isLoading) BOOL loading;
+
+// Request configuration
 
 @property (strong, nonatomic) NSString *baseURL;
 @property (strong, nonatomic) NSString *resource;
+@property (strong, nonatomic) NSString *method;
 @property (strong, nonatomic) NSDictionary *parameters;
+@property (assign, nonatomic) BOOL encodeParametersAsJSON;
+@property (strong, nonatomic) NSDictionary *headerFields;
 
+// Basic authentication
 
 @property (assign, nonatomic, getter = shouldUseBasicAuth) BOOL useBasicAuth;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
 
+// Response
+
 @property (strong, nonatomic, readonly) NSObject *response;
 
 @property (nonatomic, assign) id<UXJSONRequestDelegate> delegate;
-@property (nonatomic, readonly, getter = isLoading) BOOL loading;
+
+// Methods
 
 - (id)initWithBaseURL:(NSString *)baseURL;
 
