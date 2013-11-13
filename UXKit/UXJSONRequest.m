@@ -215,7 +215,16 @@
         
         _response = [NSJSONSerialization JSONObjectWithData:_data options:0 error:&error];
         if (error) {
-            [self performSelectorOnMainThread:@selector(returnError:) withObject:error waitUntilDone:NO];
+            NSString *description = NSLocalizedString(@"The server returned an invalid response. Please try again later.", @"");
+            
+            NSDictionary *userInfo = @{
+                NSLocalizedDescriptionKey: description,
+                NSUnderlyingErrorKey: error
+            };
+            
+            NSError *jsonError = [[NSError alloc] initWithDomain:@"UXJSONRequest" code:error.code userInfo:userInfo];
+            
+            [self performSelectorOnMainThread:@selector(returnError:) withObject:jsonError waitUntilDone:NO];
         } else {
             [self performSelectorOnMainThread:@selector(returnJSON) withObject:nil waitUntilDone:NO];
         }
