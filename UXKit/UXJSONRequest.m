@@ -161,7 +161,7 @@
                                                                  persistence:NSURLCredentialPersistenceForSession];
         [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
     } else {
-        NSLog(@"Authentication failure.");
+        [self returnError:[challenge error]];
     }
 }
 
