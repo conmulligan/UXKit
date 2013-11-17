@@ -186,19 +186,22 @@
                 self.leftLabel.text = [NSString stringWithFormat:@"%0.1f", min];
             }
             
-            CGSize leftSize = [self.leftLabel.text sizeWithFont:self.leftLabel.font
-                                       constrainedToSize:CGSizeMake(120.f, 34.f)
-                                           lineBreakMode:NSLineBreakByTruncatingTail];
-            self.leftLabel.frame = CGRectMake(10.f, 5.f, leftSize.width, 34.f);
+            CGRect leftRect = [self.leftLabel.text boundingRectWithSize:CGSizeMake(120.f, 34.f)
+                                                                options:(NSStringDrawingTruncatesLastVisibleLine)
+                                                             attributes:@{NSFontAttributeName: self.leftLabel.font}
+                                                                context:nil];
+            
+            self.leftLabel.frame = CGRectMake(10.f, 5.f, leftRect.size.width, 34.f);
             [cell.contentView addSubview:self.leftLabel];
             
             if (!self.rightLabel.text) {
                 self.rightLabel.text = [NSString stringWithFormat:@"%0.1f", max];
             }
-            CGSize rightSize = [self.rightLabel.text sizeWithFont:self.rightLabel.font
-                                              constrainedToSize:CGSizeMake(120.f, 34.f)
-                                                  lineBreakMode:NSLineBreakByTruncatingTail];
-            self.rightLabel.frame = CGRectMake(290.f - rightSize.width, 5.f, rightSize.width, 34.f);
+            CGRect rightRect = [self.rightLabel.text boundingRectWithSize:CGSizeMake(120.f, 34.f)
+                                                                  options:(NSStringDrawingTruncatesLastVisibleLine)
+                                                               attributes:@{NSFontAttributeName: self.rightLabel.font}
+                                                                  context:nil];
+            self.rightLabel.frame = CGRectMake(290.f - rightRect.size.width, 5.f, rightRect.size.width, 34.f);
             [cell.contentView addSubview:self.rightLabel];
             
             if (!self.slider) {
