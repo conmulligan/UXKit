@@ -87,14 +87,6 @@
     }
     _foregroundViewController = foregroundViewController;
     
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:self.foregroundViewController.view.bounds];
-    self.foregroundViewController.view.layer.masksToBounds = NO;
-    self.foregroundViewController.view.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.foregroundViewController.view.layer.shadowOpacity = 1.f;
-    self.foregroundViewController.view.layer.shadowOffset = CGSizeMake(0.f, 0.f);
-    self.foregroundViewController.view.layer.shadowRadius = 7.f;
-    self.foregroundViewController.view.layer.shadowPath = shadowPath.CGPath;
-    
     [self addChildViewController:self.foregroundViewController];
     [self.view addSubview:self.foregroundViewController.view];
 }
