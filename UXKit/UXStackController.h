@@ -31,8 +31,8 @@
 @property (assign, nonatomic) NSTimeInterval animationDuration;
 @property (assign, nonatomic) CGFloat visibleWidth;
 
-@property (strong, nonatomic) UIViewController *backgroundViewController;
-@property (strong, nonatomic) UIViewController *foregroundViewController;
+@property (strong, nonatomic) IBOutlet UIViewController *backgroundViewController;
+@property (strong, nonatomic) IBOutlet UIViewController *foregroundViewController;
 
 - (void)showBackgroundViewController;
 - (void)showForegroundViewController;
