@@ -158,7 +158,7 @@
         NSLog(@"Received basic authentication challenge.");
         NSURLCredential *newCredential = [NSURLCredential credentialWithUser:self.username
                                                                     password:self.password
-                                                                 persistence:NSURLCredentialPersistenceForSession];
+                                                                 persistence:NSURLCredentialPersistenceNone];
         [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
     } else {
         [self returnError:[challenge error]];
