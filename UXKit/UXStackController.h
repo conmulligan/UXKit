@@ -34,6 +34,8 @@
 @property (strong, nonatomic) IBOutlet UIViewController *backgroundViewController;
 @property (strong, nonatomic) IBOutlet UIViewController *foregroundViewController;
 
+@property (assign, nonatomic) UIInterfaceOrientationMask supportedOrientations;
+
 - (void)showBackgroundViewController;
 - (void)showForegroundViewController;
 

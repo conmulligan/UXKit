@@ -40,6 +40,7 @@
 @synthesize foregroundViewController = _foregroundViewController;
 @synthesize tapGestureRecognizer = _tapGestureRecognizer;
 @synthesize panGestureRecognizer = _panGestureRecognizer;
+@synthesize supportedOrientations = _supportedOrientations;
 
 #pragma mark - Initialization
 
@@ -50,6 +51,8 @@
         
         self.backgroundViewController = background;
         self.foregroundViewController = foreground;
+        
+        self.supportedOrientations = UIInterfaceOrientationMaskAll;
     }
     return self;
 }
@@ -64,8 +67,8 @@
     [super viewDidUnload];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    return YES;
+- (NSUInteger)supportedInterfaceOrientations {
+    return self.supportedOrientations;
 }
 
 #pragma mark - Subview management
