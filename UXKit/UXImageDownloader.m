@@ -72,9 +72,7 @@
 #pragma mark - Blocks
 
 - (void)doTransform:(UIImage *)image {
-    NSLog(@"Size 1: %fx%f", image.size.width, image.size.height);
     image = self.transform(image);
-    NSLog(@"Size 2: %fx%f", image.size.width, image.size.height);
     [self performSelectorOnMainThread:@selector(doCompletion:) withObject:image waitUntilDone:YES];
 }
 
