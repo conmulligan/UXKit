@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E1206D9D17F4871E00F5BE40 /* UXValueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1206D9C17F4871E00F5BE40 /* UXValueViewController.m */; };
+		E14C9A491910848900D87381 /* UXImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C9A481910848900D87381 /* UXImageDownloader.m */; };
 		E173234717EBEF7500AB60B1 /* UIDevice+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */; };
 		E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */ = {isa = PBXBuildFile; fileRef = E175F33A17E2BDD3006918FE /* UIImage+Masking.m */; };
 		E181806717E2BB9800654F04 /* NSManagedObjectContext+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */; };
-		E1862CCC183BE48600B4D00F /* UXStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1862CCB183BE48600B4D00F /* UXStackController.m */; };
 		E19D099E17E2B410006F9FEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19D099D17E2B410006F9FEA /* Foundation.framework */; };
 		E19D09A317E2B410006F9FEA /* UXKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E19D09A217E2B410006F9FEA /* UXKit.h */; };
 		E19D09AC17E2B411006F9FEA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19D09AB17E2B411006F9FEA /* XCTest.framework */; };
@@ -22,6 +22,7 @@
 		E19D09BA17E2B411006F9FEA /* UXKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D09B917E2B411006F9FEA /* UXKitTests.m */; };
 		E19D09C517E2B5A3006F9FEA /* UIApplication+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D09C417E2B5A3006F9FEA /* UIApplication+Utilities.m */; };
 		E1C86A4D17E60D8300630E10 /* UXJSONRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C86A4C17E60D8300630E10 /* UXJSONRequest.m */; };
+		E1E1DA77189C378200B774F6 /* UXStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E1DA76189C378200B774F6 /* UXStackController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		E11C7C56181734F600636FB0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E1206D9B17F4871E00F5BE40 /* UXValueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXValueViewController.h; sourceTree = "<group>"; };
 		E1206D9C17F4871E00F5BE40 /* UXValueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXValueViewController.m; sourceTree = "<group>"; };
+		E14C9A471910848900D87381 /* UXImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXImageDownloader.h; sourceTree = "<group>"; };
+		E14C9A481910848900D87381 /* UXImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXImageDownloader.m; sourceTree = "<group>"; };
 		E173234517EBEF7500AB60B1 /* UIDevice+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Utilities.h"; sourceTree = "<group>"; };
 		E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Utilities.m"; sourceTree = "<group>"; };
 		E175F33917E2BDD3006918FE /* UIImage+Masking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Masking.h"; sourceTree = "<group>"; };
@@ -58,7 +61,6 @@
 		E181806517E2BB9800654F04 /* NSManagedObjectContext+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Utilities.h"; sourceTree = "<group>"; };
 		E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Utilities.m"; sourceTree = "<group>"; };
 		E1862CCA183BE48600B4D00F /* UXStackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXStackController.h; sourceTree = "<group>"; };
-		E1862CCB183BE48600B4D00F /* UXStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXStackController.m; sourceTree = "<group>"; };
 		E19D099A17E2B410006F9FEA /* libUXKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUXKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19D099D17E2B410006F9FEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E19D09A117E2B410006F9FEA /* UXKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UXKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		E19D09C417E2B5A3006F9FEA /* UIApplication+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+Utilities.m"; sourceTree = "<group>"; };
 		E1C86A4B17E60D8300630E10 /* UXJSONRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXJSONRequest.h; sourceTree = "<group>"; };
 		E1C86A4C17E60D8300630E10 /* UXJSONRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXJSONRequest.m; sourceTree = "<group>"; };
+		E1E1DA76189C378200B774F6 /* UXStackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXStackController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,10 +143,12 @@
 				E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */,
 				E175F33917E2BDD3006918FE /* UIImage+Masking.h */,
 				E175F33A17E2BDD3006918FE /* UIImage+Masking.m */,
+				E14C9A471910848900D87381 /* UXImageDownloader.h */,
+				E14C9A481910848900D87381 /* UXImageDownloader.m */,
 				E1C86A4B17E60D8300630E10 /* UXJSONRequest.h */,
 				E1C86A4C17E60D8300630E10 /* UXJSONRequest.m */,
 				E1862CCA183BE48600B4D00F /* UXStackController.h */,
-				E1862CCB183BE48600B4D00F /* UXStackController.m */,
+				E1E1DA76189C378200B774F6 /* UXStackController.m */,
 				E1206D9B17F4871E00F5BE40 /* UXValueViewController.h */,
 				E1206D9C17F4871E00F5BE40 /* UXValueViewController.m */,
 				E19D09A017E2B410006F9FEA /* Supporting Files */,
@@ -221,7 +226,7 @@
 		E19D099217E2B410006F9FEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Conor Mulligan";
 			};
 			buildConfigurationList = E19D099517E2B410006F9FEA /* Build configuration list for PBXProject "UXKit" */;
@@ -261,9 +266,10 @@
 				E181806717E2BB9800654F04 /* NSManagedObjectContext+Utilities.m in Sources */,
 				E19D09C517E2B5A3006F9FEA /* UIApplication+Utilities.m in Sources */,
 				E173234717EBEF7500AB60B1 /* UIDevice+Utilities.m in Sources */,
+				E14C9A491910848900D87381 /* UXImageDownloader.m in Sources */,
 				E1C86A4D17E60D8300630E10 /* UXJSONRequest.m in Sources */,
+				E1E1DA77189C378200B774F6 /* UXStackController.m in Sources */,
 				E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */,
-				E1862CCC183BE48600B4D00F /* UXStackController.m in Sources */,
 				E1206D9D17F4871E00F5BE40 /* UXValueViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +308,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -340,7 +345,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -395,7 +399,6 @@
 		E19D09C117E2B411006F9FEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -416,7 +419,6 @@
 		E19D09C217E2B411006F9FEA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
