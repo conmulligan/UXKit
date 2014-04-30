@@ -207,9 +207,6 @@
 #pragma mark - Parsing
 
 - (void)loadJSON {
-    NSString *string = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
-    NSLog(@"Response: %@", string);
-    
     @autoreleasepool {
         NSError *error = NULL;
         
