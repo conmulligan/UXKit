@@ -42,6 +42,8 @@
 @property (strong, nonatomic, readonly) NSURLConnection *connection;
 @property (nonatomic, readonly, getter = isLoading) BOOL loading;
 
+@property (strong, nonatomic) NSRunLoop *runLoop;
+
 // Request configuration
 
 @property (strong, nonatomic) NSString *baseURL;

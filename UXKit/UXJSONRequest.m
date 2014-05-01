@@ -40,6 +40,7 @@
 @implementation UXJSONRequest
 
 @synthesize connection = _connection;
+@synthesize runLoop = _runLoop;
 @synthesize baseURL = _baseURL;
 @synthesize resource = _resource;
 @synthesize method = _method;
@@ -145,7 +146,13 @@
     
     NSLog(@"UXRESTRequest will load %@", request.URL);
     
-    _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+    
+    if (self.runLoop) {
+        [_connection scheduleInRunLoop:self.runLoop forMode:NSDefaultRunLoopMode];
+    }
+    
+    [_connection start];
     
     if (_connection) {
         _data = [[NSMutableData alloc] init];
