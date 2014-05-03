@@ -117,7 +117,9 @@
         NSData * data = [NSJSONSerialization dataWithJSONObject:self.parameters options:0 error:&error];
         
         if (!data) {
+#ifdef DEBUG
             NSLog(@"Error encoding JSON: %@", error);
+#endif
             
             if (self.delegate && [self.delegate respondsToSelector:@selector(request:didFailWithError:)]) {
                 [self.delegate request:self didFailWithError:error];
@@ -144,7 +146,9 @@
         }
     }
     
-    NSLog(@"UXRESTRequest will load %@", request.URL);
+#ifdef DEBUG
+    NSLog(@"UXJSONRequest will load %@", request.URL);
+#endif
     
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
     
@@ -162,7 +166,10 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     if (self.shouldUseBasicAuth && self.username && self.password && [challenge previousFailureCount] == 0) {
-        NSLog(@"Received basic authentication challenge.");
+#ifdef DEBUG
+        NSLog(@"UXJSONRequest received basic authentication challenge.");
+#endif
+        
         NSURLCredential *newCredential = [NSURLCredential credentialWithUser:self.username
                                                                     password:self.password
                                                                  persistence:NSURLCredentialPersistenceNone];
