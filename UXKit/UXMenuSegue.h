@@ -1,6 +1,6 @@
 //
-//  UXStackController.h
-//  UXKit
+//  UXMenuSegue.h
+//  Solas
 //
 //  Copyright 2014 Conor Mulligan. All rights reserved.
 //
@@ -24,32 +24,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
-#import "UXMenuSegue.h"
 
-@class UXStackController;
+@interface UXMenuSegue : UIStoryboardSegue
 
-@protocol UXStackControllerDelegate <NSObject>
-
-- (void)stackController:(UXStackController *)stackController didPerformSegue:(UXMenuSegue *)segue;
-
-@end
-
-@interface UXStackController : UIViewController
-
-@property (weak, nonatomic) id<UXStackControllerDelegate> delegate;
-
-@property (assign, nonatomic) NSTimeInterval animationDuration;
-@property (assign, nonatomic) CGFloat visibleWidth;
-
-@property (strong, nonatomic) UIViewController *backgroundViewController;
-@property (strong, nonatomic) UIViewController *foregroundViewController;
-
-@property (assign, nonatomic) UIInterfaceOrientationMask supportedOrientations;
-
-- (void)showBackgroundViewController;
-- (void)showForegroundViewController;
-
-- (id)initWithBackgroundViewController:(UIViewController *)background foregroundViewController:(UIViewController *)foreground;
+@property (strong, nonatomic) void(^performBlock)(UXMenuSegue *segue, UIViewController *source, UIViewController *destination);
 
 @end

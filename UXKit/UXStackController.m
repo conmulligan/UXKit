@@ -2,7 +2,7 @@
 //  UXStackController.m
 //  UXKit
 //
-//  Copyright 2012 Conor Mulligan. All rights reserved.
+//  Copyright 2014 Conor Mulligan. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,9 @@
 
 #import "UXStackController.h"
 
+static NSString *const UXSegueBackgroundID = @"background";
+static NSString *const UXSegueForegroundID = @"foreground";
+
 @interface UXStackController ()
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
@@ -34,6 +37,7 @@
 
 @implementation UXStackController
 
+@synthesize delegate = _delegate;
 @synthesize animationDuration = _animationDuration;
 @synthesize visibleWidth = _visibleWidth;
 @synthesize backgroundViewController = _backgroundViewController;
@@ -44,15 +48,26 @@
 
 #pragma mark - Initialization
 
+- (void)commonInit {
+    self.animationDuration = 0.35f;
+    self.visibleWidth = 20.f;
+    
+    self.supportedOrientations = UIInterfaceOrientationMaskAll;
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    if (self = [super initWithCoder:coder]) {
+        [self commonInit];
+    }
+    return self;
+}
+
 - (id)initWithBackgroundViewController:(UIViewController *)background foregroundViewController:(UIViewController *)foreground {
     if (self = [super initWithNibName:nil bundle:nil]) {
-        self.animationDuration = 0.35f;
-        self.visibleWidth = 10.f;
+        [self commonInit];
         
         self.backgroundViewController = background;
         self.foregroundViewController = foreground;
-        
-        self.supportedOrientations = UIInterfaceOrientationMaskAll;
     }
     return self;
 }
@@ -61,14 +76,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
+    
+    [self loadStoryboardControllers];
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
     return self.supportedOrientations;
+}
+
+#pragma mark - Segues
+
+- (void)loadStoryboardControllers {
+    if (self.storyboard && !self.backgroundViewController) {
+        [self performSegueWithIdentifier:UXSegueBackgroundID sender:nil];
+        [self performSegueWithIdentifier:UXSegueForegroundID sender:nil];
+    }
+}
+
+- (void)prepareForSegue:(UXMenuSegue *)segue sender:(id)sender {
+    NSString *identifier = segue.identifier;
+    if ([segue isKindOfClass:[UXMenuSegue class]] && !sender) {
+        if ([identifier isEqualToString:UXSegueBackgroundID]) {
+            segue.performBlock = ^(UXMenuSegue *menuSegue, UIViewController *source, UIViewController *destination) {
+                self.backgroundViewController = destination;
+            };
+        } else if ([identifier isEqualToString:UXSegueForegroundID]) {
+            segue.performBlock = ^(UXMenuSegue *menuSegue, UIViewController *source, UIViewController *destination) {
+                self.foregroundViewController = destination;
+            };
+        }
+    }
+    
+    __strong id<UXStackControllerDelegate> delegate = self.delegate;
+    if (delegate) {
+        [delegate stackController:self didPerformSegue:segue];
+    }
 }
 
 #pragma mark - Subview management
@@ -102,7 +144,6 @@
     _backgroundViewController = backgroundViewController;
     
     [self addChildViewController:self.backgroundViewController];
-    [self.view addSubview:self.backgroundViewController.view];
     [self.view sendSubviewToBack:self.backgroundViewController.view];
 }
 
