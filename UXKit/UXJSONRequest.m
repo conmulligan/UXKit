@@ -53,6 +53,7 @@
 @synthesize response = _response;
 @synthesize delegate = _delegate;
 @synthesize loading = _loading;
+@synthesize data = _data;
 
 #pragma mark - Initialization
 

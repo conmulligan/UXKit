@@ -84,10 +84,6 @@
     self.title = NSLocalizedString(@"Value", @"");
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 #pragma mark - Subviews
 
 - (UILabel *)valueLabel {
@@ -138,7 +134,7 @@
     if ([self.value isKindOfClass:[NSNumber class]]) {
         return 1;
     } else if ([self.value isKindOfClass:[NSArray class]]) {
-        return [(NSArray *)self.value count];
+        return (NSInteger)[(NSArray *)self.value count];
     }
     return 0;
 }
@@ -247,14 +243,14 @@
             [textField becomeFirstResponder];
         }
     } else if ([self.value isKindOfClass:[NSArray class]]) {
-        if (indexPath.row == self.selectedIndex) {
+        if (indexPath.row == (NSInteger)self.selectedIndex) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         
-        NSObject *item = [(NSArray *)self.value objectAtIndex:indexPath.row];
+        NSObject *item = [(NSArray *)self.value objectAtIndex:(NSUInteger)indexPath.row];
         cell.textLabel.text = [item description];
     }
     
@@ -265,7 +261,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.value isKindOfClass:[NSArray class]]) {
-        NSObject *item = [(NSArray *)self.value objectAtIndex:indexPath.row];
+        NSObject *item = [(NSArray *)self.value objectAtIndex:(NSUInteger)indexPath.row];
         if ([self.delegate respondsToSelector:@selector(valueViewController:didSelectObject:fromArray:)]) {
             [self.delegate valueViewController:self didSelectObject:item fromArray:(NSArray *)self.value];
             [self.navigationController popViewControllerAnimated:YES];

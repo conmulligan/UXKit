@@ -33,7 +33,7 @@
     CGRect imageRect = CGRectMake(0.f, 0.f, CGImageGetWidth(imageRef), CGImageGetHeight(imageRef));
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate(NULL, imageRect.size.width, imageRect.size.height, 8, imageRect.size.width * 4,
+    CGContextRef context = CGBitmapContextCreate(NULL, (size_t)imageRect.size.width, (size_t)imageRect.size.height, 8, (size_t)(imageRect.size.width * 4.f),
                                                  colorSpace, kCGBitmapByteOrderDefault);
     
     CGContextSaveGState(context);
