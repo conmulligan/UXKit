@@ -14,6 +14,12 @@
 		E173234717EBEF7500AB60B1 /* UIDevice+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */; };
 		E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */ = {isa = PBXBuildFile; fileRef = E175F33A17E2BDD3006918FE /* UIImage+Masking.m */; };
 		E181806717E2BB9800654F04 /* NSManagedObjectContext+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */; };
+		E19860D0191FE77A00146598 /* UXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19860CF191FE77A00146598 /* UXWebViewController.m */; };
+		E19860DC191FEC4B00146598 /* UXSafariActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E19860DB191FEC4B00146598 /* UXSafariActivity.m */; };
+		E19860F0191FF6DA00146598 /* Left.png in Resources */ = {isa = PBXBuildFile; fileRef = E19860EC191FF6DA00146598 /* Left.png */; };
+		E19860F1191FF6DA00146598 /* Left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E19860ED191FF6DA00146598 /* Left@2x.png */; };
+		E19860F2191FF6DA00146598 /* Right.png in Resources */ = {isa = PBXBuildFile; fileRef = E19860EE191FF6DA00146598 /* Right.png */; };
+		E19860F3191FF6DA00146598 /* Right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E19860EF191FF6DA00146598 /* Right@2x.png */; };
 		E19D099E17E2B410006F9FEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19D099D17E2B410006F9FEA /* Foundation.framework */; };
 		E19D09A317E2B410006F9FEA /* UXKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E19D09A217E2B410006F9FEA /* UXKit.h */; };
 		E19D09AC17E2B411006F9FEA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19D09AB17E2B411006F9FEA /* XCTest.framework */; };
@@ -65,6 +71,16 @@
 		E175F33A17E2BDD3006918FE /* UIImage+Masking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Masking.m"; sourceTree = "<group>"; };
 		E181806517E2BB9800654F04 /* NSManagedObjectContext+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Utilities.h"; sourceTree = "<group>"; };
 		E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Utilities.m"; sourceTree = "<group>"; };
+		E19860CE191FE77A00146598 /* UXWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXWebViewController.h; sourceTree = "<group>"; };
+		E19860CF191FE77A00146598 /* UXWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXWebViewController.m; sourceTree = "<group>"; };
+		E19860DA191FEC4B00146598 /* UXSafariActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXSafariActivity.h; sourceTree = "<group>"; };
+		E19860DB191FEC4B00146598 /* UXSafariActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXSafariActivity.m; sourceTree = "<group>"; };
+		E19860E2191FF3F500146598 /* Compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Compass.png; sourceTree = "<group>"; };
+		E19860E3191FF3F500146598 /* Compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Compass@2x.png"; sourceTree = "<group>"; };
+		E19860EC191FF6DA00146598 /* Left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Left.png; sourceTree = "<group>"; };
+		E19860ED191FF6DA00146598 /* Left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Left@2x.png"; sourceTree = "<group>"; };
+		E19860EE191FF6DA00146598 /* Right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Right.png; sourceTree = "<group>"; };
+		E19860EF191FF6DA00146598 /* Right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Right@2x.png"; sourceTree = "<group>"; };
 		E19D099A17E2B410006F9FEA /* libUXKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUXKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19D099D17E2B410006F9FEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E19D09A117E2B410006F9FEA /* UXKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UXKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -115,10 +131,33 @@
 			name = UXStackController;
 			sourceTree = "<group>";
 		};
+		E19860D1191FE92A00146598 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E19860E2191FF3F500146598 /* Compass.png */,
+				E19860E3191FF3F500146598 /* Compass@2x.png */,
+				E19860EC191FF6DA00146598 /* Left.png */,
+				E19860ED191FF6DA00146598 /* Left@2x.png */,
+				E19860EE191FF6DA00146598 /* Right.png */,
+				E19860EF191FF6DA00146598 /* Right@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E19860DD191FEC7B00146598 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				E19860DA191FEC4B00146598 /* UXSafariActivity.h */,
+				E19860DB191FEC4B00146598 /* UXSafariActivity.m */,
+			);
+			name = Activities;
+			sourceTree = "<group>";
+		};
 		E19D099117E2B410006F9FEA = {
 			isa = PBXGroup;
 			children = (
 				E19D099F17E2B410006F9FEA /* UXKit */,
+				E19860D1191FE92A00146598 /* Resources */,
 				E19D09B317E2B411006F9FEA /* UXKitTests */,
 				E19D099C17E2B410006F9FEA /* Frameworks */,
 				E19D099B17E2B410006F9FEA /* Products */,
@@ -148,6 +187,7 @@
 		E19D099F17E2B410006F9FEA /* UXKit */ = {
 			isa = PBXGroup;
 			children = (
+				E19860DD191FEC7B00146598 /* Activities */,
 				E1595EDF191C2FA000484FA9 /* UXStackController */,
 				E19D09A217E2B410006F9FEA /* UXKit.h */,
 				E181806517E2BB9800654F04 /* NSManagedObjectContext+Utilities.h */,
@@ -164,6 +204,8 @@
 				E1C86A4C17E60D8300630E10 /* UXJSONRequest.m */,
 				E1206D9B17F4871E00F5BE40 /* UXValueViewController.h */,
 				E1206D9C17F4871E00F5BE40 /* UXValueViewController.m */,
+				E19860CE191FE77A00146598 /* UXWebViewController.h */,
+				E19860CF191FE77A00146598 /* UXWebViewController.m */,
 				E19D09A017E2B410006F9FEA /* Supporting Files */,
 			);
 			path = UXKit;
@@ -265,6 +307,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19860F0191FF6DA00146598 /* Left.png in Resources */,
+				E19860F1191FF6DA00146598 /* Left@2x.png in Resources */,
+				E19860F2191FF6DA00146598 /* Right.png in Resources */,
+				E19860F3191FF6DA00146598 /* Right@2x.png in Resources */,
 				E19D09B817E2B411006F9FEA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +330,8 @@
 				E1595EDD191C17A300484FA9 /* UXStackController.m in Sources */,
 				E1C86A4D17E60D8300630E10 /* UXJSONRequest.m in Sources */,
 				E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */,
+				E19860D0191FE77A00146598 /* UXWebViewController.m in Sources */,
+				E19860DC191FEC4B00146598 /* UXSafariActivity.m in Sources */,
 				E1206D9D17F4871E00F5BE40 /* UXValueViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
