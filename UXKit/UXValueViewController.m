@@ -72,7 +72,7 @@
     if ([self.value isKindOfClass:[NSNumber class]] && [(NSNumber *)self.value floatValue] > 1.f) {
         [NSException raise:NSInvalidArgumentException format:@"Percantage Mode requires a number less than 1."];
     } else {
-        _mode = mode;
+        _mode = (UXValueViewControllerMode)mode;
     }
 }
 
@@ -82,6 +82,12 @@
     [super viewDidLoad];
 
     self.title = NSLocalizedString(@"Value", @"");
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 #pragma mark - Subviews
