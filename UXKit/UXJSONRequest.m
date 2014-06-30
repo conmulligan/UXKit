@@ -52,6 +52,8 @@
 @synthesize password = _password;
 @synthesize response = _response;
 @synthesize delegate = _delegate;
+@synthesize completion = _completion;
+@synthesize error = _error;
 @synthesize loading = _loading;
 @synthesize data = _data;
 
@@ -200,6 +202,14 @@
     [self openConnection];
 }
 
+- (void)startLoadingResource:(NSString *)resource completion:(void (^)(NSObject *response))completion error:(void (^)(NSError *error))error {
+    self.resource = resource;
+    self.completion = completion;
+    self.error = error;
+    
+    [self openConnection];
+}
+
 - (void)stopLoading {
     if (_connection != nil) {
         [_connection cancel];
@@ -249,6 +259,12 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(requestDidFinishLoading:)]) {
         [self.delegate requestDidFinishLoading:self];
     }
+    
+    if (self.completion) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            self.completion(self.response);
+        });
+    }
 }
 
 - (void)returnError:(NSError *)error {
@@ -256,6 +272,12 @@
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(request:didFailWithError:)]) {
         [self.delegate request:self didFailWithError:error];
+    }
+    
+    if (self.error) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            self.error(error);
+        });
     }
 }
 

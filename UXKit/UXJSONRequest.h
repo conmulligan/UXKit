@@ -63,13 +63,17 @@
 
 @property (strong, nonatomic, readonly) NSObject *response;
 
-@property (nonatomic, assign) id<UXJSONRequestDelegate> delegate;
+@property (assign, nonatomic) id<UXJSONRequestDelegate> delegate;
+
+@property (copy, nonatomic) void (^completion)(NSObject *response);
+@property (copy, nonatomic) void (^error)(NSError *error);
 
 // Methods
 
 - (id)initWithBaseURL:(NSString *)baseURL;
 
 - (void)startLoading;
+- (void)startLoadingResource:(NSString *)resource completion:(void (^)(NSObject *response))completion error:(void (^)(NSError *error))error;
 - (void)stopLoading;
 
 - (void)useBasicAuthWithUsername:(NSString *)username andPassword:(NSString *)password;
