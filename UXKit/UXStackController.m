@@ -32,6 +32,9 @@ static NSString *const UXSegueForegroundID = @"foreground";
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
+@property (strong, nonatomic) UIScreenEdgePanGestureRecognizer *edgeGestureRecognizer;
+
+@property (strong, nonatomic) UIBarButtonItem *menuBarButtonItem;
 
 @end
 
@@ -42,9 +45,11 @@ static NSString *const UXSegueForegroundID = @"foreground";
 @synthesize visibleWidth = _visibleWidth;
 @synthesize backgroundViewController = _backgroundViewController;
 @synthesize foregroundViewController = _foregroundViewController;
+@synthesize supportedOrientations = _supportedOrientations;
 @synthesize tapGestureRecognizer = _tapGestureRecognizer;
 @synthesize panGestureRecognizer = _panGestureRecognizer;
-@synthesize supportedOrientations = _supportedOrientations;
+@synthesize edgeGestureRecognizer = _edgeGestureRecognizer;
+@synthesize menuBarButtonItem = _menuBarButtonItem;
 
 #pragma mark - Initialization
 
@@ -53,6 +58,8 @@ static NSString *const UXSegueForegroundID = @"foreground";
     self.visibleWidth = 20.f;
     
     self.supportedOrientations = UIInterfaceOrientationMaskAll;
+    
+    self.menuBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStylePlain target:self action:@selector(menuSelected:)];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -82,6 +89,12 @@ static NSString *const UXSegueForegroundID = @"foreground";
 
 - (NSUInteger)supportedInterfaceOrientations {
     return self.supportedOrientations;
+}
+
+#pragma mark - Actions
+
+- (void)menuSelected:(id)sender {
+    [self showBackgroundViewController];
 }
 
 #pragma mark - Segues
@@ -127,24 +140,49 @@ static NSString *const UXSegueForegroundID = @"foreground";
         }
         
         foregroundViewController.view.frame = self.foregroundViewController.view.frame;
-        [_foregroundViewController removeFromParentViewController];
+        
+        [_foregroundViewController willMoveToParentViewController:nil];
         [_foregroundViewController.view removeFromSuperview];
+        [_foregroundViewController removeFromParentViewController];
     }
+    
     _foregroundViewController = foregroundViewController;
     
     [self addChildViewController:self.foregroundViewController];
     [self.view addSubview:self.foregroundViewController.view];
+    
+    if (!self.edgeGestureRecognizer) {
+        _edgeGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(panForegroundViewController:)];
+    }
+    self.edgeGestureRecognizer.edges = UIRectEdgeLeft;
+    [self.foregroundViewController.view addGestureRecognizer:self.edgeGestureRecognizer];
+    
+    [self.foregroundViewController didMoveToParentViewController:self];
+    
+    if ([_foregroundViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navigationController = (UINavigationController *)foregroundViewController;
+        navigationController.topViewController.navigationItem.leftBarButtonItem = self.menuBarButtonItem;
+    } else {
+        _foregroundViewController.navigationItem.leftBarButtonItem = self.menuBarButtonItem;
+    }
 }
 
 - (void)setBackgroundViewController:(UIViewController *)backgroundViewController {
     if (self.backgroundViewController) {
-        [_backgroundViewController removeFromParentViewController];
+        [_backgroundViewController willMoveToParentViewController:nil];
         [_backgroundViewController.view removeFromSuperview];
+        [_backgroundViewController removeFromParentViewController];
     }
     _backgroundViewController = backgroundViewController;
     
     [self addChildViewController:self.backgroundViewController];
+    
+    CGRect f = self.backgroundViewController.view.frame;
+    f.size.width = self.view.frame.size.width - self.visibleWidth;
+    self.backgroundViewController.view.frame = f;
+    
     [self.view sendSubviewToBack:self.backgroundViewController.view];
+    [self.backgroundViewController didMoveToParentViewController:self];
 }
 
 - (void)showBackgroundViewController {
@@ -167,19 +205,21 @@ static NSString *const UXSegueForegroundID = @"foreground";
         view.userInteractionEnabled = NO;
     }
     
-    CGRect f = self.backgroundViewController.view.frame;
-    f.size.width = self.view.frame.size.width - self.visibleWidth;
-    self.backgroundViewController.view.frame = f;
+    [self updateBackgroundFrame];
     
     [UIView animateWithDuration:self.animationDuration animations:^{
         CGRect frame = self.foregroundViewController.view.frame;
         frame.origin.x = self.view.frame.size.width - self.visibleWidth;
         self.foregroundViewController.view.frame = frame;
+        
+        [self updateBackgroundFrame];
     }];
 }
 
 - (void)panForegroundViewController:(UIPanGestureRecognizer *)recognizer {
     CGPoint translation = [recognizer translationInView:self.view];
+    
+    // Pan foreground
     
     CGFloat left = self.view.frame.size.width - self.visibleWidth;
     CGFloat w = self.foregroundViewController.view.frame.size.width;
@@ -194,8 +234,12 @@ static NSString *const UXSegueForegroundID = @"foreground";
     recognizer.view.center = CGPointMake(x, recognizer.view.center.y);
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     
+    [self.view addSubview:self.backgroundViewController.view];
+    [self.view bringSubviewToFront:self.foregroundViewController.view];
+    [self updateBackgroundFrame];
+    
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        if (recognizer.view.frame.origin.x < (left/2)) {
+        if (recognizer.view.frame.origin.x < (left / 2)) {
             [self showForegroundViewController];
         } else {
             [self showBackgroundViewController];
@@ -208,10 +252,14 @@ static NSString *const UXSegueForegroundID = @"foreground";
         view.userInteractionEnabled = YES;
     }
     
+    [self updateBackgroundFrame];
+    
     [UIView animateWithDuration:self.animationDuration animations:^{
         CGRect frame = self.foregroundViewController.view.frame;
         frame.origin.x = 0;
         self.foregroundViewController.view.frame = frame;
+        
+        [self updateBackgroundFrame];
     } completion:^(BOOL finished) {
         if (self.tapGestureRecognizer) {
             [self.foregroundViewController.view removeGestureRecognizer:self.tapGestureRecognizer];
@@ -224,6 +272,12 @@ static NSString *const UXSegueForegroundID = @"foreground";
         
         [self.backgroundViewController.view removeFromSuperview];
     }];
+}
+
+- (void)updateBackgroundFrame {
+    CGRect f = self.backgroundViewController.view.frame;
+    f.origin.x = (self.foregroundViewController.view.frame.origin.x - f.size.width) / 3;
+    self.backgroundViewController.view.frame = f;
 }
 
 @end
