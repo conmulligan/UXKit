@@ -41,6 +41,7 @@
 
 @property (assign, nonatomic) NSTimeInterval animationDuration;
 @property (assign, nonatomic) CGFloat visibleWidth;
+@property (strong, nonatomic) UIImage *menuItemImage;
 
 @property (strong, nonatomic) UIViewController *backgroundViewController;
 @property (strong, nonatomic) UIViewController *foregroundViewController;

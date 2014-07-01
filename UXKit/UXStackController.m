@@ -43,6 +43,7 @@ static NSString *const UXSegueForegroundID = @"foreground";
 @synthesize delegate = _delegate;
 @synthesize animationDuration = _animationDuration;
 @synthesize visibleWidth = _visibleWidth;
+@synthesize menuItemImage = _menuItemImage;
 @synthesize backgroundViewController = _backgroundViewController;
 @synthesize foregroundViewController = _foregroundViewController;
 @synthesize supportedOrientations = _supportedOrientations;
@@ -54,7 +55,7 @@ static NSString *const UXSegueForegroundID = @"foreground";
 #pragma mark - Initialization
 
 - (void)commonInit {
-    self.animationDuration = 0.35f;
+    self.animationDuration = 0.3f;
     self.visibleWidth = 20.f;
     
     self.supportedOrientations = UIInterfaceOrientationMaskAll;
@@ -83,6 +84,10 @@ static NSString *const UXSegueForegroundID = @"foreground";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (self.menuItemImage) {
+        self.menuBarButtonItem.image = self.menuItemImage;
+    }
     
     [self loadStoryboardControllers];
 }
