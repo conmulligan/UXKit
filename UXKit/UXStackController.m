@@ -34,7 +34,7 @@ static NSString *const UXSegueForegroundID = @"foreground";
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer;
 @property (strong, nonatomic) UIScreenEdgePanGestureRecognizer *edgeGestureRecognizer;
 
-@property (strong, nonatomic) UIBarButtonItem *menuBarButtonItem;
+@property (readonly, nonatomic) UIBarButtonItem *menuBarButtonItem;
 
 @end
 
@@ -59,8 +59,6 @@ static NSString *const UXSegueForegroundID = @"foreground";
     self.visibleWidth = 20.f;
     
     self.supportedOrientations = UIInterfaceOrientationMaskAll;
-    
-    self.menuBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStylePlain target:self action:@selector(menuSelected:)];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -86,6 +84,7 @@ static NSString *const UXSegueForegroundID = @"foreground";
     [super viewDidLoad];
     
     if (self.menuItemImage) {
+        self.menuBarButtonItem.title = nil;
         self.menuBarButtonItem.image = self.menuItemImage;
     }
     
@@ -94,6 +93,26 @@ static NSString *const UXSegueForegroundID = @"foreground";
 
 - (NSUInteger)supportedInterfaceOrientations {
     return self.supportedOrientations;
+}
+
+#pragma mark - Bar button item
+
+- (UIBarButtonItem *)menuBarButtonItem {
+    UIBarButtonItem *item;
+    
+    if (self.menuItemImage) {
+        item = [[UIBarButtonItem alloc] initWithImage:self.menuItemImage
+                                                style:UIBarButtonItemStyleBordered
+                                               target:self
+                                               action:@selector(menuSelected:)];
+    } else {
+        item = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Menu", @"")
+                                                style:UIBarButtonItemStyleBordered
+                                               target:self
+                                               action:@selector(menuSelected:)];
+    }
+    
+    return item;
 }
 
 #pragma mark - Actions
