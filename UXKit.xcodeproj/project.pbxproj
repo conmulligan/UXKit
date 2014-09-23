@@ -13,6 +13,7 @@
 		E1595EDD191C17A300484FA9 /* UXStackController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1595EDC191C17A300484FA9 /* UXStackController.m */; };
 		E173234717EBEF7500AB60B1 /* UIDevice+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */; };
 		E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */ = {isa = PBXBuildFile; fileRef = E175F33A17E2BDD3006918FE /* UIImage+Masking.m */; };
+		E17E868C19D102760034D4A3 /* UXChromeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E17E868B19D102760034D4A3 /* UXChromeActivity.m */; };
 		E181806717E2BB9800654F04 /* NSManagedObjectContext+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */; };
 		E19860D0191FE77A00146598 /* UXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19860CF191FE77A00146598 /* UXWebViewController.m */; };
 		E19860DC191FEC4B00146598 /* UXSafariActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E19860DB191FEC4B00146598 /* UXSafariActivity.m */; };
@@ -74,6 +75,8 @@
 		E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Utilities.m"; sourceTree = "<group>"; };
 		E175F33917E2BDD3006918FE /* UIImage+Masking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Masking.h"; sourceTree = "<group>"; };
 		E175F33A17E2BDD3006918FE /* UIImage+Masking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Masking.m"; sourceTree = "<group>"; };
+		E17E868A19D102760034D4A3 /* UXChromeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXChromeActivity.h; sourceTree = "<group>"; };
+		E17E868B19D102760034D4A3 /* UXChromeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXChromeActivity.m; sourceTree = "<group>"; };
 		E181806517E2BB9800654F04 /* NSManagedObjectContext+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Utilities.h"; sourceTree = "<group>"; };
 		E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Utilities.m"; sourceTree = "<group>"; };
 		E19860CE191FE77A00146598 /* UXWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXWebViewController.h; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 				E19860DB191FEC4B00146598 /* UXSafariActivity.m */,
 				E1C5B14119D0E3B800374497 /* UXMapsActivity.h */,
 				E1C5B14219D0E3B800374497 /* UXMapsActivity.m */,
+				E17E868A19D102760034D4A3 /* UXChromeActivity.h */,
+				E17E868B19D102760034D4A3 /* UXChromeActivity.m */,
 			);
 			name = Activities;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				E1C86A4D17E60D8300630E10 /* UXJSONRequest.m in Sources */,
 				E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */,
 				E19860D0191FE77A00146598 /* UXWebViewController.m in Sources */,
+				E17E868C19D102760034D4A3 /* UXChromeActivity.m in Sources */,
 				E19860DC191FEC4B00146598 /* UXSafariActivity.m in Sources */,
 				E1206D9D17F4871E00F5BE40 /* UXValueViewController.m in Sources */,
 			);
