@@ -23,7 +23,10 @@
 }
 
 - (UIImage *)activityImage {
-	return [UIImage imageNamed:@"Map"];
+    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"UXKit.bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:path];
+    
+    return [UIImage imageWithContentsOfFile:[bundle pathForResource:@"Map" ofType:@"png"]];
 }
 
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
