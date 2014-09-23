@@ -78,6 +78,14 @@ static NSString *const UXSegueForegroundID = @"foreground";
     return self;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    if (self.backgroundViewController.view.superview == self.view) {
+        return [self.backgroundViewController preferredStatusBarStyle];
+    } else {
+        return [self.foregroundViewController preferredStatusBarStyle];
+    }
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
