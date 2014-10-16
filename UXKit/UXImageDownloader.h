@@ -29,7 +29,7 @@
 
 @property (nonatomic, readonly) NSURL *url;
 
-- (void)loadImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image))completion;
-- (void)loadImageAtURL:(NSURL *)url transform:(UIImage * (^)(UIImage *image))transform completion:(void (^)(UIImage *image))completion;
+- (void)loadImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image, BOOL cached))completion;
+- (void)loadImageAtURL:(NSURL *)url transform:(UIImage * (^)(UIImage *image))transform completion:(void (^)(UIImage *image, BOOL cached))completion;
 
 @end

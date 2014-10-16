@@ -28,10 +28,12 @@
 @interface UXImageDownloader ()
 
 @property (copy, nonatomic) UIImage * (^transform)(UIImage *);
-@property (copy, nonatomic) void (^completion)(UIImage *);
+@property (copy, nonatomic) void (^completion)(UIImage *, BOOL);
 
 @property (strong, nonatomic) NSURLConnection *connection;
 @property (strong, nonatomic) NSMutableData *data;
+
++ (NSCache *)imageCache;
 
 @end
 
@@ -45,21 +47,38 @@
 
 #pragma mark - Disk image
 
-- (void)loadImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image))completion {
+- (void)loadImageAtURL:(NSURL *)url completion:(void (^)(UIImage *image, BOOL cached))completion {
     [self loadImageAtURL:url transform:nil completion:completion];
 }
 
-- (void)loadImageAtURL:(NSURL *)url transform:(UIImage * (^)(UIImage *))transform completion:(void (^)(UIImage *))completion {
+- (void)loadImageAtURL:(NSURL *)url transform:(UIImage * (^)(UIImage *))transform completion:(void (^)(UIImage *image, BOOL cached))completion {
     _url = url;
     self.transform = transform;
     self.completion = completion;
     
-    self.data = [[NSMutableData alloc] init];
+    UIImage *image = [[UXImageDownloader imageCache] objectForKey:url];
     
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:self.url];
-    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
-    [self.connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-    [self.connection start];
+    if (image) {
+        image = self.transform(image);
+        self.completion(image, YES);
+    } else {
+        self.data = [[NSMutableData alloc] init];
+        
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:self.url];
+        self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+        [self.connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+        [self.connection start];
+    }
+}
+
+#pragma mark - Cache
+
++ (NSCache *)imageCache {
+    static NSCache *cache = nil;
+    if (!cache) {
+        cache = [[NSCache alloc] init];
+    }
+    return cache;
 }
 
 #pragma mark - NSURLConnection delegate
@@ -74,6 +93,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     UIImage *image = [UIImage imageWithData:self.data];
+    [[UXImageDownloader imageCache] setObject:image forKey:self.url];
     
     if (self.transform) {
         [self performSelectorInBackground:@selector(doTransform:) withObject:image];
@@ -83,7 +103,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    self.completion(nil);
+    self.completion(nil, NO);
 }
 
 #pragma mark - Blocks
@@ -94,7 +114,7 @@
 }
 
 - (void)doCompletion:(UIImage *)image {
-    self.completion(image);
+    self.completion(image, NO);
 }
 
 @end

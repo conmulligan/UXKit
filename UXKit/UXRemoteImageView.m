@@ -30,12 +30,18 @@
 
 - (void)loadImageAtURL:(NSURL *)url {
     UXImageDownloader *downloader = [[UXImageDownloader alloc] init];
-    [downloader loadImageAtURL:url completion:^(UIImage *image) {
-        self.alpha = 0.f;
+    [downloader loadImageAtURL:url completion:^(UIImage *image, BOOL cached) {
+        if (!cached) {
+            self.alpha = 0.f;
+        }
+        
         self.image = image;
-        [UIView animateWithDuration:0.25f animations:^{
-            self.alpha = 1.f;
-        }];
+        
+        if (cached) {
+            [UIView animateWithDuration:0.25f animations:^{
+                self.alpha = 1.f;
+            }];
+        }
     }];
 }
 
