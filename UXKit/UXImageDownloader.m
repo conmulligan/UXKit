@@ -59,8 +59,12 @@
     UIImage *image = [[UXImageDownloader imageCache] objectForKey:url];
     
     if (image) {
-        image = self.transform(image);
-        self.completion(image, YES);
+        if (self.transform) {
+            image = self.transform(image);
+        }
+        if (self.completion) {
+            self.completion(image, YES);
+        }
     } else {
         self.data = [[NSMutableData alloc] init];
         
