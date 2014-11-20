@@ -117,7 +117,7 @@
     
     if (self.encodeParametersAsJSON) {
         NSError *error = NULL;
-        NSData * data = [NSJSONSerialization dataWithJSONObject:self.parameters options:0 error:&error];
+        NSData *data = [NSJSONSerialization dataWithJSONObject:self.parameters options:0 error:&error];
         
         if (!data) {
 #ifdef DEBUG
@@ -142,10 +142,19 @@
     } else {
         NSString *parameters = [self dictionaryAsParameterString:self.parameters];
         
-        if (parameters && ![parameters isEqualToString:@""]) {
-            request.URL = [NSURL URLWithString:[[NSArray arrayWithObjects:_baseURL, self.resource, parameters, nil] componentsJoinedByString:@"/"]];
+        if ([request.HTTPMethod isEqualToString:@"POST"]) {
+            NSData *data = [parameters dataUsingEncoding:NSUTF8StringEncoding];
+            
+            [request addValue:[NSString stringWithFormat:@"%lu", (unsigned long)[data length]] forHTTPHeaderField:@"Content-Length"];
+            [request setHTTPBody:data];
+            
+            request.URL = [NSURL URLWithString:[@[_baseURL, self.resource] componentsJoinedByString:@"/"]];
         } else {
-            request.URL = [NSURL URLWithString:[[NSArray arrayWithObjects:_baseURL, self.resource, nil] componentsJoinedByString:@"/"]];
+            if (parameters && ![parameters isEqualToString:@""]) {
+                request.URL = [NSURL URLWithString:[@[_baseURL, self.resource, parameters] componentsJoinedByString:@"/"]];
+            } else {
+                request.URL = [NSURL URLWithString:[@[_baseURL, self.resource] componentsJoinedByString:@"/"]];
+            }
         }
     }
     
@@ -168,11 +177,11 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    if (self.shouldUseBasicAuth && self.username && self.password && [challenge previousFailureCount] == 0) {
 #ifdef DEBUG
-        NSLog(@"UXJSONRequest received basic authentication challenge.");
+    NSLog(@"UXJSONRequest received basic authentication challenge.");
 #endif
-        
+    
+    if (self.shouldUseBasicAuth && self.username && self.password && [challenge previousFailureCount] == 0) {
         NSURLCredential *newCredential = [NSURLCredential credentialWithUser:self.username
                                                                     password:self.password
                                                                  persistence:NSURLCredentialPersistenceNone];
@@ -239,6 +248,11 @@
         if (error) {
             NSString *description = NSLocalizedString(@"The server returned an invalid response. Please try again later.", @"");
             
+#ifdef DEBUG
+            NSLog(@"UXJSONRequest failed: %@", description);
+            NSLog(@"Response: %@", [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding]);
+#endif
+
             NSDictionary *userInfo = @{
                 NSLocalizedDescriptionKey: description,
                 NSUnderlyingErrorKey: error
