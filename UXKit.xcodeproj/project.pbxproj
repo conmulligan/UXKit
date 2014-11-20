@@ -14,6 +14,9 @@
 		E173234717EBEF7500AB60B1 /* UIDevice+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E173234617EBEF7500AB60B1 /* UIDevice+Utilities.m */; };
 		E175F33B17E2BDD3006918FE /* UIImage+Masking.m in Sources */ = {isa = PBXBuildFile; fileRef = E175F33A17E2BDD3006918FE /* UIImage+Masking.m */; };
 		E17E868C19D102760034D4A3 /* UXChromeActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E17E868B19D102760034D4A3 /* UXChromeActivity.m */; };
+		E17E869019D103A90034D4A3 /* Chrome.png in Resources */ = {isa = PBXBuildFile; fileRef = E17E868D19D103A90034D4A3 /* Chrome.png */; };
+		E17E869119D103A90034D4A3 /* Chrome@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E17E868E19D103A90034D4A3 /* Chrome@3x.png */; };
+		E17E869219D103A90034D4A3 /* Chrome2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E17E868F19D103A90034D4A3 /* Chrome2x.png */; };
 		E181806717E2BB9800654F04 /* NSManagedObjectContext+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */; };
 		E19860D0191FE77A00146598 /* UXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19860CF191FE77A00146598 /* UXWebViewController.m */; };
 		E19860DC191FEC4B00146598 /* UXSafariActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = E19860DB191FEC4B00146598 /* UXSafariActivity.m */; };
@@ -77,6 +80,9 @@
 		E175F33A17E2BDD3006918FE /* UIImage+Masking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Masking.m"; sourceTree = "<group>"; };
 		E17E868A19D102760034D4A3 /* UXChromeActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXChromeActivity.h; sourceTree = "<group>"; };
 		E17E868B19D102760034D4A3 /* UXChromeActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UXChromeActivity.m; sourceTree = "<group>"; };
+		E17E868D19D103A90034D4A3 /* Chrome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chrome.png; sourceTree = "<group>"; };
+		E17E868E19D103A90034D4A3 /* Chrome@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chrome@3x.png"; sourceTree = "<group>"; };
+		E17E868F19D103A90034D4A3 /* Chrome2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chrome2x.png; sourceTree = "<group>"; };
 		E181806517E2BB9800654F04 /* NSManagedObjectContext+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+Utilities.h"; sourceTree = "<group>"; };
 		E181806617E2BB9800654F04 /* NSManagedObjectContext+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+Utilities.m"; sourceTree = "<group>"; };
 		E19860CE191FE77A00146598 /* UXWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UXWebViewController.h; sourceTree = "<group>"; };
@@ -149,6 +155,9 @@
 		E19860D1191FE92A00146598 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E17E868D19D103A90034D4A3 /* Chrome.png */,
+				E17E868E19D103A90034D4A3 /* Chrome@3x.png */,
+				E17E868F19D103A90034D4A3 /* Chrome2x.png */,
 				E1C5B14419D0E49400374497 /* Map.png */,
 				E1C5B14519D0E49400374497 /* Map@2x.png */,
 				E1C5B14619D0E49400374497 /* Map@3x.png */,
@@ -333,10 +342,13 @@
 			files = (
 				E1C5B14719D0E49400374497 /* Map.png in Resources */,
 				E19860F0191FF6DA00146598 /* Left.png in Resources */,
+				E17E869219D103A90034D4A3 /* Chrome2x.png in Resources */,
 				E19860F1191FF6DA00146598 /* Left@2x.png in Resources */,
+				E17E869019D103A90034D4A3 /* Chrome.png in Resources */,
 				E1C5B14819D0E49400374497 /* Map@2x.png in Resources */,
 				E19860F2191FF6DA00146598 /* Right.png in Resources */,
 				E19860F3191FF6DA00146598 /* Right@2x.png in Resources */,
+				E17E869119D103A90034D4A3 /* Chrome@3x.png in Resources */,
 				E1C5B14919D0E49400374497 /* Map@3x.png in Resources */,
 				E19D09B817E2B411006F9FEA /* InfoPlist.strings in Resources */,
 			);
