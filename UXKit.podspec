@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'UXKit'
-  s.version      = '0.3.2'
+  s.version      = '0.3.3'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.homepage     = 'https://github.com/conmulligan/UXKit'
   s.author       = { "Conor Mulligan" => "conmulligan@gmail.com" }

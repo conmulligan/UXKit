@@ -32,5 +32,6 @@
 
 + (NSString *)appName;
 + (NSString *)appVersion;
++ (NSString *)appBuildVersion;
 
 @end
