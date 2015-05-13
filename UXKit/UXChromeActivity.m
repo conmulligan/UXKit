@@ -56,10 +56,6 @@
     for (id activityItem in activityItems) {
         NSURL *inputURL = [NSURL URLWithString:@"googlechrome://google.com"];
         return [[UIApplication sharedApplication] canOpenURL:inputURL];
-        
-        if ([activityItem isKindOfClass:[NSURL class]] && [[UIApplication sharedApplication] canOpenURL:inputURL]) {
-            return YES;
-        }
     }
     
     return NO;
