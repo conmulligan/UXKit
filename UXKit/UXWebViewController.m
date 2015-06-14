@@ -56,7 +56,7 @@
     _titleLabel.font = [UIFont systemFontOfSize:12.f];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.numberOfLines = 2;
-    _titleLabel.textColor = [UINavigationBar appearance].titleTextAttributes[NSForegroundColorAttributeName];
+    _titleLabel.textColor = self.navigationController.navigationBar.titleTextAttributes[NSForegroundColorAttributeName];
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.text = [[self.request URL] description];
     self.navigationItem.titleView = _titleLabel;
