@@ -42,6 +42,15 @@
 - (id)initWithRequest:(NSURLRequest *)request {
     if (self = [super initWithNibName:nil bundle:nil]) {
         self.request = request;
+        
+        _titleLabel = [[UILabel alloc] initWithFrame:self.navigationController.navigationBar.frame];
+        _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _titleLabel.font = [UIFont systemFontOfSize:12.f];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.numberOfLines = 2;
+        _titleLabel.textColor = self.navigationController.navigationBar.titleTextAttributes[NSForegroundColorAttributeName];
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.text = [[self.request URL] description];
     }
     return self;
 }
@@ -51,14 +60,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _titleLabel = [[UILabel alloc] initWithFrame:self.navigationController.navigationBar.frame];
-    _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _titleLabel.font = [UIFont systemFontOfSize:12.f];
-    _titleLabel.textAlignment = NSTextAlignmentCenter;
-    _titleLabel.numberOfLines = 2;
-    _titleLabel.textColor = self.navigationController.navigationBar.titleTextAttributes[NSForegroundColorAttributeName];
-    _titleLabel.backgroundColor = [UIColor clearColor];
-    _titleLabel.text = [[self.request URL] description];
     self.navigationItem.titleView = _titleLabel;
     
     _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.view.frame.size.width, self.view.frame.size.height)];
