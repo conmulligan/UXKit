@@ -60,6 +60,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _titleLabel.frame = self.navigationController.navigationBar.frame;
     self.navigationItem.titleView = _titleLabel;
     
     _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.view.frame.size.width, self.view.frame.size.height)];
