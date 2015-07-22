@@ -110,12 +110,12 @@ static NSString *const UXSegueForegroundID = @"foreground";
     
     if (self.menuItemImage) {
         item = [[UIBarButtonItem alloc] initWithImage:self.menuItemImage
-                                                style:UIBarButtonItemStyleBordered
+                                                style:UIBarButtonItemStylePlain
                                                target:self
                                                action:@selector(menuSelected:)];
     } else {
         item = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Menu", @"")
-                                                style:UIBarButtonItemStyleBordered
+                                                style:UIBarButtonItemStylePlain
                                                target:self
                                                action:@selector(menuSelected:)];
     }
