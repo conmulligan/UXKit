@@ -86,6 +86,16 @@ static NSString *const UXSegueForegroundID = @"foreground";
     }
 }
 
+- (void)setVisibleWidth:(CGFloat)visibleWidth {
+    _visibleWidth = visibleWidth;
+    
+    if (self.backgroundViewController != nil) {
+        CGRect f = self.backgroundViewController.view.frame;
+        f.size.width = self.view.frame.size.width - self.visibleWidth;
+        self.backgroundViewController.view.frame = f;
+    }
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
